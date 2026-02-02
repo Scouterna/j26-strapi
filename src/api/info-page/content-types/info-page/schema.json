@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "info_pages",
+  "info": {
+    "singularName": "info-page",
+    "pluralName": "info-pages",
+    "displayName": "Infosidor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "summary": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": false
+    },
+    "content": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "icon": {
+      "type": "customField",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      },
+      "required": true
+    }
+  }
+}
