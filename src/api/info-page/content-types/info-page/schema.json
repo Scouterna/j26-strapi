@@ -4,7 +4,7 @@
   "info": {
     "singularName": "info-page",
     "pluralName": "info-pages",
-    "displayName": "Infosidor"
+    "displayName": "Info page"
   },
   "options": {
     "draftAndPublish": true
@@ -15,26 +15,16 @@
     }
   },
   "attributes": {
+    "sortOrder": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
     "title": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
-    },
-    "summary": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": false
-    },
-    "content": {
-      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -51,8 +41,29 @@
       },
       "customField": "plugin::strapi-plugin-iconhub.iconhub",
       "options": {
+        "category_Material": true,
+        "category_UI_24px": true,
+        "category_UI_16px_32px": true,
+        "category_UI_Other_Mixed_Grid": false,
+        "category_UI_Multicolor": false,
+        "category_Thematic": true,
+        "category_Logos": false,
+        "category_Flags_Maps": true,
+        "category_Programming": true,
+        "category_Emoji": false,
+        "category_Uncategorized": true,
+        "category_Archive_Unmaintained": false,
         "storeIconData": true,
         "storeIconName": true
+      },
+      "required": true
+    },
+    "content": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
       },
       "required": true
     }

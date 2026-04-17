@@ -430,48 +430,10 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiFrontPageFrontPage extends Struct.SingleTypeSchema {
-  collectionName: 'front_pages';
-  info: {
-    displayName: 'F\u00F6rstasidan';
-    pluralName: 'front-pages';
-    singularName: 'front-page';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    content: Schema.Attribute.Blocks &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::front-page.front-page'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiInfoPageInfoPage extends Struct.CollectionTypeSchema {
   collectionName: 'info_pages';
   info: {
-    displayName: 'Infosidor';
+    displayName: 'Info page';
     pluralName: 'info-pages';
     singularName: 'info-page';
   };
@@ -499,6 +461,18 @@ export interface ApiInfoPageInfoPage extends Struct.CollectionTypeSchema {
       Schema.Attribute.CustomField<
         'plugin::strapi-plugin-iconhub.iconhub',
         {
+          category_Archive_Unmaintained: false;
+          category_Emoji: false;
+          category_Flags_Maps: true;
+          category_Logos: false;
+          category_Material: true;
+          category_Programming: true;
+          category_Thematic: true;
+          category_UI_16px_32px: true;
+          category_UI_24px: true;
+          category_UI_Multicolor: false;
+          category_UI_Other_Mixed_Grid: false;
+          category_Uncategorized: true;
           storeIconData: true;
           storeIconName: true;
         }
@@ -514,52 +488,13 @@ export interface ApiInfoPageInfoPage extends Struct.CollectionTypeSchema {
       'api::info-page.info-page'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    summary: Schema.Attribute.String &
+    sortOrder: Schema.Attribute.Integer &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true;
+          localized: false;
         };
       }>;
     title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiNotificationNotification
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'notifications';
-  info: {
-    displayName: 'Notiser';
-    pluralName: 'notifications';
-    singularName: 'notification';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::notification.notification'
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -835,6 +770,7 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     ext: Schema.Attribute.String;
+    focalPoint: Schema.Attribute.JSON;
     folder: Schema.Attribute.Relation<'manyToOne', 'plugin::upload.folder'> &
       Schema.Attribute.Private;
     folderPath: Schema.Attribute.String &
@@ -1082,9 +1018,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::front-page.front-page': ApiFrontPageFrontPage;
       'api::info-page.info-page': ApiInfoPageInfoPage;
-      'api::notification.notification': ApiNotificationNotification;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

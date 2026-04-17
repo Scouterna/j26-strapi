@@ -1,1 +1,9 @@
-export default () => ({});
+import type { Core } from '@strapi/strapi';
+
+const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin => ({
+  'sortable-entries': {
+    enabled: true,
+  },
+});
+
+export default config;
